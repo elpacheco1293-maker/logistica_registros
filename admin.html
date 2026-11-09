@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Panel · NEXOCORP</title>
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f4fb;--card:#fff;--tx:#14143a;--mut:#62628a;--bd:#e0e1f3;--ac:#5454ea;--acd:#3d3dd1;--acx:#fff;--tint:#eef0ff;--ok:#e1f6ec;--okx:#0f6b43;--wn:#fff2d6;--wnx:#7a5200;--er:#fde7e7;--erx:#a11d1d;--sh:0 10px 30px rgba(40,40,140,.12);color-scheme:light;box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0d24;--card:#171738;--tx:#ececff;--mut:#a5a4cc;--bd:#2f2f5e;--ac:#7d7dff;--acd:#9a9aff;--acx:#0d0d24;--tint:#202049;--ok:#10362a;--okx:#7be0b4;--wn:#3a2f12;--wnx:#f1cf80;--er:#3b1b1b;--erx:#ff9c9c;--sh:0 10px 30px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d0d24;--card:#171738;--tx:#ececff;--mut:#a5a4cc;--bd:#2f2f5e;--ac:#7d7dff;--acd:#9a9aff;--acx:#0d0d24;--tint:#202049;--ok:#10362a;--okx:#7be0b4;--wn:#3a2f12;--wnx:#f1cf80;--er:#3b1b1b;--erx:#ff9c9c;--sh:0 10px 30px rgba(0,0,0,.4);color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font:16px/1.45 Manrope,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,.brand,.btn,.stp{font-family:Sora,Manrope,system-ui,sans-serif}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#23237f 0%,#4343d8 55%,#6f62ff 100%);color:#fff;padding:calc(env(safe-area-inset-top,0px) + 20px) 18px 64px}
+.hero svg{position:absolute;right:-50px;bottom:-34px;width:320px;opacity:.2;pointer-events:none}
+.hero .in{position:relative;max-width:1000px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:17px;letter-spacing:.2px}
+.brand img{width:46px;height:46px;border-radius:13px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.brand small{display:block;font-family:Manrope,sans-serif;font-weight:500;font-size:12.5px;opacity:.8;letter-spacing:0}
+h1{font-size:clamp(26px,6vw,36px);line-height:1.12;margin:26px 0 6px;font-weight:700;max-width:520px}
+.lead{margin:0;opacity:.85;font-size:15px;max-width:460px}
+.w{max-width:1000px;margin:-40px auto 0;padding:0 14px 28px;position:relative}
+.tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.tabs button{border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:9px 16px;border-radius:999px;cursor:pointer;font:600 14px Manrope,sans-serif;box-shadow:var(--sh)}
+.tabs button.on{background:var(--ac);color:var(--acx);border-color:var(--ac)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:22px 20px;margin-bottom:14px;max-width:640px;box-shadow:var(--sh)}
+.card.wide{max-width:none}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.full{grid-column:1/-1}
+label{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--tx);margin-bottom:6px}label i{color:#e0404a;font-style:normal}
+.n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:var(--acx);font:600 12px Sora,sans-serif}
+.stp{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px;margin:20px 0 12px;padding-top:18px;border-top:1px dashed var(--bd)}
+input,select,textarea{width:100%;min-height:48px;padding:11px 14px;border:1.5px solid var(--bd);border-radius:12px;background:var(--card);color:var(--tx);font:500 16px Manrope,sans-serif;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--ac);box-shadow:0 0 0 4px color-mix(in srgb,var(--ac) 22%,transparent)}
+input[readonly]{background:var(--tint);border-color:transparent;font-weight:600}input:disabled{opacity:.5;background:var(--tint)}
+.btn{width:100%;background:linear-gradient(135deg,var(--ac),var(--acd));color:var(--acx);border:0;padding:0 20px;min-height:52px;border-radius:14px;font-weight:600;font-size:16px;cursor:pointer;box-shadow:0 8px 20px color-mix(in srgb,var(--ac) 40%,transparent)}
+.btn:disabled{opacity:.55}.btn:active{transform:translateY(1px)}
+.msg{padding:11px 14px;border-radius:12px;margin:14px 0;font-size:14px;font-weight:500;border-left:4px solid}
+.ok{background:var(--ok);color:var(--okx);border-color:var(--okx)}.wn{background:var(--wn);color:var(--wnx);border-color:var(--wnx)}.er{background:var(--er);color:var(--erx);border-color:var(--erx)}
+.done{text-align:center;padding:30px 20px}
+.done h2{margin:14px 0 4px;font-size:24px}.done .sb{color:var(--mut);margin:0 0 18px}
+.ck{width:84px;height:84px}.ck circle{fill:var(--ok);stroke:none}.ck path{fill:none;stroke:var(--okx);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:dr .6s .15s ease-out forwards}
+@keyframes dr{to{stroke-dashoffset:0}}@media(prefers-reduced-motion:reduce){.ck path{animation:none;stroke-dashoffset:0}}
+.rc{text-align:left;background:var(--tint);border-radius:14px;padding:6px 16px;margin:0 0 20px}
+.rc div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--bd);font-size:14px}.rc div:last-child{border:0}.rc span{color:var(--mut)}.rc b{text-align:right}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--bd);text-align:left;white-space:nowrap}th{color:var(--mut);font-weight:600}td.n{display:table-cell;width:auto;height:auto;background:none;color:inherit;border-radius:0;text-align:right;font:inherit}
+td input{min-height:36px;padding:6px 9px;min-width:160px;font-size:13px}
+.kp{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.kp div{flex:1;min-width:130px;background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:12px 14px;box-shadow:var(--sh)}
+.kp b{display:block;font:700 26px Sora,sans-serif}.kp span{font-size:12.5px;color:var(--mut)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-bottom:12px}.row>*{flex:1;min-width:150px}.row .btn{flex:0 0 auto;width:auto}
+.x{background:none;border:0;color:var(--mut);cursor:pointer;font-size:16px}
+.sub{color:var(--mut);font-size:13px}
+[hidden]{display:none!important}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+</head>
+<body>
+<header class="hero">
+<svg viewBox="0 0 200 120" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" aria-hidden="true"><path d="M12 60C12 18 62 18 100 60C138 102 188 102 188 60C188 18 138 18 100 60C62 102 12 102 12 60Z"/></svg>
+<div class="in">
+<div class="brand"><img src="logo.png" alt="NEXOCORP"><div>NEXOCORP<small>Logística inversa</small></div></div>
+<h1>Panel de devoluciones</h1>
+<p class="lead">Registros de las bodegas, política de devolución y catálogo de productos.</p>
+</div>
+</header>
+<div class="w">
+<div class="card" id="lg" hidden><div class="g"><div class="full"><label for="em">Correo</label><input id="em" type="email" autocomplete="username"></div><div class="full"><label for="pw">Contraseña</label><input id="pw" type="password" autocomplete="current-password"></div></div><div id="lm" class="msg er" hidden></div><div style="margin-top:14px"><button class="btn" id="li">Ingresar</button></div></div>
+<div id="ap" hidden>
+<div class="tabs" id="tabs"><button data-t="rep" class="on">Registros</button><button data-t="cat">Catálogo</button><button id="out" style="margin-left:auto">Salir</button></div>
+<section id="rep">
+<div class="kp"><div><b id="k1">0</b><span>Registros</span></div><div><b id="k2">0</b><span>Unidades totales</span></div><div><b id="k3">0</b><span>Bodegas</span></div></div>
+<div class="card wide">
+<div class="row"><div><label>Bodega</label><select id="fb"><option value="">Todas</option></select></div><div><label>Buscar</label><input id="fq" placeholder="Código, descripción, lote…"></div><button class="btn" id="dl">Descargar CSV</button></div>
+<div class="tw"><table><thead><tr><th>Bodega</th><th>Código</th><th>Descripción</th><th>Proveedor</th><th>Unidad</th><th>Lote</th><th>Caduca</th><th>Cant.</th><th>Factura</th><th>Política de devolución</th><th></th></tr></thead><tbody id="tb"></tbody></table></div>
+</div>
+</section>
+<section id="cat" hidden>
+<div class="card wide">
+<p style="margin-top:0">Carga la data: una fila por producto con <b>código · descripción · unidad de medida · proveedor</b> y, si la tienes, <b>política de devolución</b> (5ª columna, opcional). Pega desde Sheets o sube un CSV.</p>
+<textarea id="ci" rows="6"></textarea>
+<div class="row" style="margin-top:8px"><div><input type="file" id="cf" accept=".csv,.tsv,.txt"></div><button class="btn" id="cs">Importar al catálogo</button></div>
+<div class="sub" id="cc"></div>
+</div>
+</section>
+</div>
+</div>
+<script>
+const SUPABASE_URL="PEGA_AQUI_TU_URL",SUPABASE_KEY="PEGA_AQUI_TU_ANON_KEY";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+let regs=[],rows=[];
+document.querySelectorAll("#tabs button[data-t]").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#tabs button[data-t]").forEach(x=>x.classList.toggle("on",x===b));
+  ["rep","cat"].forEach(s=>$(s).hidden=s!==b.dataset.t);if(b.dataset.t==="rep")load();
+});
+const show=on=>{$("lg").hidden=on;$("ap").hidden=!on};
+(async()=>{const s=await sb.auth.getSession();show(!!s.data.session);if(s.data.session)load()})();
+$("li").onclick=async()=>{const r=await sb.auth.signInWithPassword({email:$("em").value.trim(),password:$("pw").value});
+  if(r.error){$("lm").hidden=false;$("lm").textContent="Correo o contraseña incorrectos.";return}show(true);load()};
+$("out").onclick=async()=>{await sb.auth.signOut();show(false)};
+async function load(){
+  const r=await sb.from("registros").select("*").order("created_at",{ascending:false});
+  if(r.error){alert("No se pudo cargar: "+r.error.message);return}
+  regs=r.data;draw();
+  const c=await sb.from("catalogo").select("codigo",{count:"exact",head:true});$("cc").textContent=(c.count||0)+" productos en catálogo.";
+}
+function draw(){
+  const fb=$("fb"),sel=fb.value,bs=[...new Set(regs.map(r=>r.bodega))].sort();
+  fb.innerHTML='<option value="">Todas</option>'+bs.map(b=>`<option${b===sel?" selected":""}>${esc(b)}</option>`).join("");
+  const q=$("fq").value.toLowerCase();
+  rows=regs.filter(r=>(!fb.value||r.bodega===fb.value)&&(!q||[r.codigo,r.descripcion,r.lote,r.factura].join(" ").toLowerCase().includes(q))).sort((a,b)=>a.bodega.localeCompare(b.bodega));
+  $("tb").innerHTML=rows.map(r=>`<tr><td>${esc(r.bodega)}</td><td>${esc(r.codigo)}</td><td>${esc(r.descripcion)}</td><td>${esc(r.proveedor)}</td><td>${esc(r.unidad)}</td><td>${esc(r.lote)}</td><td>${esc(r.caducidad)}</td><td class="n">${esc(r.cantidad)}</td><td>${esc(r.factura)}</td><td><input data-p="${r.id}" value="${esc(r.politica)}" placeholder="Cargar política"></td><td><button class="x" data-d="${r.id}" title="Eliminar">✕</button></td></tr>`).join("")||'<tr><td colspan="11">Sin registros.</td></tr>';
+  $("k1").textContent=rows.length;$("k2").textContent=rows.reduce((s,r)=>s+(r.cantidad||0),0);$("k3").textContent=new Set(rows.map(r=>r.bodega)).size;
+}
+["fb","fq"].forEach(i=>$(i).addEventListener("input",draw));
+$("tb").addEventListener("change",async e=>{const id=e.target.dataset.p;if(!id)return;const r=await sb.from("registros").update({politica:e.target.value.trim()}).eq("id",id);if(r.error)alert("No se pudo guardar: "+r.error.message)});
+$("tb").onclick=async e=>{const id=e.target.dataset.d;if(!id||!confirm("¿Eliminar este registro? La bodega podrá registrar ese código otra vez."))return;const r=await sb.from("registros").delete().eq("id",id);if(r.error)alert(r.error.message);else load()};
+$("dl").onclick=()=>{
+  const h=["Bodega","Producto","Descripción","Proveedor","Unidad","Lote","Fecha caducidad","Cantidad","Factura","Política devolución"],q=v=>'"'+String(v==null?"":v).replace(/"/g,'""')+'"';
+  const csv="\ufeff"+[h.map(q).join(",")].concat(rows.map(r=>[r.bodega,r.codigo,r.descripcion,r.proveedor,r.unidad,r.lote,r.caducidad,r.cantidad,r.factura,r.politica].map(q).join(","))).join("\r\n");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download="registro_psicotropicos.csv";a.click();
+};
+$("cf").onchange=async e=>{const f=e.target.files[0];if(f)$("ci").value=await f.text()};
+$("cs").onclick=async()=>{
+  let L=$("ci").value.split(/\r?\n/).map(l=>{const d=l.includes("\t")?"\t":l.includes(";")?";":",";return l.split(d).map(s=>s.trim().replace(/^"|"$/g,""))}).filter(c=>c[0]);
+  if(L.length&&/^c[oó]d/i.test(L[0][0]))L.shift();if(!L.length)return;
+  const data=L.map(c=>({codigo:c[0],descripcion:c[1]||"",unidad:c[2]||"",proveedor:c[3]||"",politica:c[4]||null}));
+  let n=0;for(let i=0;i<data.length;i+=200){const r=await sb.from("catalogo").upsert(data.slice(i,i+200),{onConflict:"codigo"});if(r.error){$("cc").textContent="Error: "+r.error.message+" ("+n+" importados)";return}n+=Math.min(200,data.length-i)}
+  $("ci").value="";$("cc").textContent=n+" productos importados.";
+};
+</script>
+</body>
+</html>
