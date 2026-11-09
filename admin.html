@@ -89,7 +89,7 @@ td input{min-height:36px;padding:6px 9px;min-width:160px;font-size:13px}
 </div>
 </div>
 <script>
-const SUPABASE_URL="https://ruyapqlqoigcfgtmkwnx.supabase.co",SUPABASE_KEY="sb_publishable_nhyVzI0_0szebfiJODu0gA_sOD_ZGoI";
+const SUPABASE_URL="PEGA_AQUI_TU_URL",SUPABASE_KEY="PEGA_AQUI_TU_ANON_KEY";
 const $=id=>document.getElementById(id);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
@@ -123,7 +123,7 @@ $("tb").onclick=async e=>{const id=e.target.dataset.d;if(!id||!confirm("¿Elimin
 $("dl").onclick=()=>{
   const h=["Bodega","Producto","Descripción","Proveedor","Unidad","Lote","Fecha caducidad","Cantidad","Factura","Política devolución"],q=v=>'"'+String(v==null?"":v).replace(/"/g,'""')+'"';
   const csv="\ufeff"+[h.map(q).join(",")].concat(rows.map(r=>[r.bodega,r.codigo,r.descripcion,r.proveedor,r.unidad,r.lote,r.caducidad,r.cantidad,r.factura,r.politica].map(q).join(","))).join("\r\n");
-  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download="registro_psicotropicos.csv";a.click();
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download="registro_devolucion.csv";a.click();
 };
 $("cf").onchange=async e=>{const f=e.target.files[0];if(f)$("ci").value=await f.text()};
 $("cs").onclick=async()=>{
